@@ -1,5 +1,5 @@
-# CS3330 Object Oriented Homework 3 - Group B
-CS3330 Homework 3. This Java program TBD. 
+# CS3330 Object Oriented Homework 4 - Group B
+CS3330 Homework 4. This Java program TBD. 
 
 ## Getting Started
 ### Dependencies

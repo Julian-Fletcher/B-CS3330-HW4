@@ -171,4 +171,11 @@ public class Car extends Vehicle
 		System.out.println(this.startType);
 	}
 
+	@Override
+	public String toString() {
+		return "Car [brand=" + brand + ", make=" + make + ", modelYear=" + modelYear + ", price=" + price + ", color="
+				+ color + ", fuelType=" + fuelType + ", mileage=" + mileage + ", mass=" + mass + ", cylinders="
+				+ cylinders + ", gasTankCapacity=" + gasTankCapacity + ", startType=" + startType + "]";
+	}
+
 }

@@ -10,7 +10,7 @@ public class Main {
 		
 		VehicleManager vehicleManager = VehicleManager.getInstance(); //create the only instance of vehicleManager
 		
-		String vehicleFilePath = "vehicleManager/vehicleList.csv"; //creating filePath to vehicleList.csv
+		String vehicleFilePath = "Files/vehicleList.csv"; //creating filePath to vehicleList.csv
 		boolean readCSV = vehicleManager.readFromFile(vehicleFilePath);
 		if(readCSV == true) //checking if readFromFile worked
 		{

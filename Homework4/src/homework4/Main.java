@@ -6,8 +6,6 @@ public class Main {
 
 	public static void main(String[] args) 
 	{
-		System.out.println("Code");
-		
 		VehicleManager vehicleManager = VehicleManager.getInstance(); //create the only instance of vehicleManager
 		
 		String vehicleFilePath = "Files/vehicleList.csv"; //creating filePath to vehicleList.csv

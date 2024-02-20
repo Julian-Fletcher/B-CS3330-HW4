@@ -145,23 +145,30 @@ public class Car extends Vehicle
 	{
 		double maintenanceCost;
 		double maintenConst = 0.0005;
+		
 		LocalDate date = LocalDate.now();
 		int currentYear = date.getYear();
+		
 		maintenanceCost = distance * this.mass * (currentYear - this.modelYear) * this.cylinders * maintenConst;
 		
 		return maintenanceCost;
 	}
 
 	@Override
-	public double calculateFuelEfficiency(double distance, double fuelPrice) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double calculateFuelEfficiency(double distance, double fuelPrice) 
+	{
+		double fuelEfficiency;
+		double fuelEffiConst = 0.003;
+		
+		fuelEfficiency = this.cylinders * this.gasTankCapacity * (fuelPrice / distance) * fuelEffiConst;
+		
+		return fuelEfficiency;
 	}
 
 	@Override
-	public void startEngine() {
-		// TODO Auto-generated method stub
-		
+	public void startEngine()
+	{
+		System.out.println(this.startType);
 	}
 
 }

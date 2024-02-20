@@ -8,8 +8,7 @@ public class Main {
 	{
 		VehicleManager vehicleManager = VehicleManager.getInstance(); //create the only instance of vehicleManager
 		
-		String vehicleFilePath = "Files/vehicleList.csv"; //creating filePath to vehicleList.csv
-		boolean readCSV = vehicleManager.readFromFile(vehicleFilePath);
+		boolean readCSV = vehicleManager.initializeStock();
 		if(readCSV == true) //checking if readFromFile worked
 		{
 			System.out.println("VehicleManger successfully read from .csv");

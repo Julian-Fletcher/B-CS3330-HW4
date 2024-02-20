@@ -18,10 +18,7 @@ public class VehicleManager
 {
 	private static VehicleManager instance = null;
 	ArrayList<Vehicle> masterInventory = new ArrayList<>();
-	
-	public VehicleManager()
-	{		
-	}
+	private static String vehicleFilePath = "Files/vehicleList.csv"; //creating filePath to vehicleList.csv
 	
 	public static VehicleManager getInstance()
 	{
@@ -32,11 +29,11 @@ public class VehicleManager
 		return instance;
 	}
 
-	public boolean readFromFile(String fileName) //reads all data from the .csv file and makes vehicle objects that fall under their given subclasses
+	public boolean initializeStock() //reads all data from the .csv file and makes vehicle objects that fall under their given subclasses
 	{
 		try 
 		{
-			Scanner fileIn = new Scanner(new FileInputStream(fileName));
+			Scanner fileIn = new Scanner(new FileInputStream(vehicleFilePath));
 			fileIn.nextLine(); //storing the first line of the .csv file somewhere else since it doesn't contain vehicle elements
 			
 			while(fileIn.hasNext())

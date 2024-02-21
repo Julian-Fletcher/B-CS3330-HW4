@@ -212,10 +212,46 @@ public class VehicleManager {
 		return count;
 	}
 
-	public Vehicle getVehicleWithHighestMaintenanceCost(double distance) {
+	public Vehicle getVehicleWithHighestMaintenanceCost(double distance)
+	{
+		double highestCost = 0;
+		double currentCost;
+		int count = 0;
+		int highCount = 0;
+		
+		for(Vehicle v : masterInventory)
+		{
+			System.out.println(v.calculateMaintenaceCost(distance));
+			currentCost = v.calculateMaintenaceCost(distance);
+			if(currentCost >= highestCost)
+			{
+				highestCost = currentCost;
+				highCount = count;
+			}
+			count++;
+		}
+		return masterInventory.get(highCount);
 	}
 
-	public Vehicle getVehicleWithLowestMaintenanceCost(double distance) {
+	public Vehicle getVehicleWithLowestMaintenanceCost(double distance)
+	{
+		double lowestCost = 0;
+		double currentCost;
+		int count = 0;
+		int lowCount = 0;
+		
+		for(Vehicle v : masterInventory)
+		{
+			//System.out.println(v.calculateMaintenaceCost(distance));
+			currentCost = v.calculateMaintenaceCost(distance);
+			if(currentCost <= lowestCost)
+			{
+				lowestCost = currentCost;
+				lowCount = count;
+			}
+			count++;
+		}
+		return masterInventory.get(lowCount);
 	}
 
 	public ArrayList<Vehicle> getVehicleWithHighestFuelEfficiency(double distance, double fuelPrice) {

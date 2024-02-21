@@ -150,7 +150,7 @@ public class Car extends Vehicle
 		int currentYear = date.getYear();
 		
 		maintenanceCost = distance * this.mass * (currentYear - this.modelYear) * this.cylinders * maintenConst;
-		
+		super.maintenanceCost = maintenanceCost;
 		return maintenanceCost;
 	}
 
@@ -161,7 +161,7 @@ public class Car extends Vehicle
 		double fuelEffiConst = 0.003;
 		
 		fuelEfficiency = this.cylinders * this.gasTankCapacity * (fuelPrice / distance) * fuelEffiConst;
-		
+		super.fuelEfficiency = fuelEfficiency;
 		return fuelEfficiency;
 	}
 
@@ -175,7 +175,7 @@ public class Car extends Vehicle
 	public String toString() {
 		return "Car [brand=" + brand + ", make=" + make + ", modelYear=" + modelYear + ", price=" + price + ", color="
 				+ color + ", fuelType=" + fuelType + ", mileage=" + mileage + ", mass=" + mass + ", cylinders="
-				+ cylinders + ", gasTankCapacity=" + gasTankCapacity + ", startType=" + startType + "]";
+				+ cylinders + ", gasTankCapacity=" + gasTankCapacity + ", startType=" + startType + ", maintenanceCost=" + maintenanceCost + ", fuelEfficiency=" + fuelEfficiency + "]";
 	}
 
 }

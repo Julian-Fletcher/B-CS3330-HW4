@@ -18,6 +18,9 @@ public class Main {
 			System.out.println("VehicleManger did NOT successfully read from .csv!!!");
 		}
 		
+		vehicleManager.displayAllCarInformation();
+		vehicleManager.displayVehicleInformation(vehicleManager.masterInventory.get(1));
+		
 	}
 
 }

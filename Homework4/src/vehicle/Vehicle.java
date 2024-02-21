@@ -14,8 +14,13 @@ public abstract class Vehicle {
 	protected int cylinders;
 	protected double gasTankCapacity;
 	protected StartMechanism startType;
+	protected double maintenanceCost;
+	protected double fuelEfficiency;
 	
 	public abstract double calculateMaintenaceCost(double distance);
 	public abstract double calculateFuelEfficiency(double distance, double fuelPrice);
 	public abstract void startEngine();
+	
+
+	
 }	

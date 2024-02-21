@@ -17,7 +17,7 @@ import vehicleAttributes.VehicleColor;
 public class VehicleManager
 {
 	private static VehicleManager instance = null;
-	ArrayList<Vehicle> masterInventory = new ArrayList<>();
+	public ArrayList<Vehicle> masterInventory = new ArrayList<>();
 	private static String vehicleFilePath = "Files/vehicleList.csv"; //creating filePath to vehicleList.csv
 	
 	public static VehicleManager getInstance()
@@ -98,26 +98,75 @@ public class VehicleManager
 	
 	public void displayAllCarInformation()
 	{
+		int count = 0;
+		for(Vehicle vehicle : masterInventory) {
+			if(vehicle instanceof Car) {
+				System.out.println(vehicle);
+				count++;
+			}
+		}
+		if(count==0) {
+			System.out.println("There Are No Vehicles With These Parameters.");
+		}
 	}
 	
 	public void displayAllTruckInformation()
 	{
+		int count = 0;
+		for(Vehicle vehicle : masterInventory) {
+			if(vehicle instanceof Truck) {
+				System.out.println(vehicle);
+				count++;
+			}
+		}
+		if(count==0) {
+			System.out.println("There Are No Vehicles With These Parameters.");
+		}
 	}
 	
 	public void displayAllSUVInformation()
 	{
+		int count = 0;
+		for(Vehicle vehicle : masterInventory) {
+			if(vehicle instanceof SUV) {
+				System.out.println(vehicle);
+				count++;
+			}
+		}
+		if(count==0) {
+			System.out.println("There Are No Vehicles With These Parameters.");
+		}
 	}
 	
 	public void displayAllMotorBikeInformation() 
 	{
+		int count = 0;
+		for(Vehicle vehicle : masterInventory) {
+			if(vehicle instanceof MotorBike) {
+				System.out.println(vehicle);
+				count++;
+			}
+		}
+		if(count==0) {
+			System.out.println("There Are No Vehicles With These Parameters.");
+		}
 	}
 	
 	public void displayVehicleInformation(Vehicle v)
 	{
+		System.out.println(v);
 	}
 	
 	public void displayAllVehicleInformation()
 	{
+		int count = 0;
+		for(Vehicle vehicle : masterInventory) {
+			System.out.println(vehicle);
+			count++;
+		}
+		if(count==0) {
+			System.out.println("There Are No Vehicles With These Parameters.");
+		}
 	}
 	
 	public boolean removeVehicle(Vehicle vehicle)

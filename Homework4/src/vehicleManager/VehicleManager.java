@@ -186,12 +186,19 @@ public class VehicleManager
 	
 	private boolean isVehicleType(Vehicle v, Class clazz)
 	{
+		
 		return true;
 	}
 	
 	public int getNumberOfVehichlesByType(Class clazz)
 	{
-		return 0;
+		int count = 0;
+		for(Vehicle vehicle : masterInventory) {
+			if(isVehicleType(vehicle, clazz)) {
+				count++;
+			}
+		}
+		return count;
 	}
 	
 	public Vehicle getVehicleWithHighestMaintenanceCost(double distance)

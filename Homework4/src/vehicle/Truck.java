@@ -179,4 +179,9 @@ public class Truck extends Vehicle
 				+ cylinders + ", gasTankCapacity=" + gasTankCapacity + ", startType=" + startType + ", maintenanceCost=" + maintenanceCost + ", fuelEfficiency=" + fuelEfficiency + "]";
 	}
 	
+	public String printFormat() {
+		return "Truck" + brand + "," + modelYear + "," + price + "," + color + "," + fuelType + "," 
+				+ mileage + "," + mass + "," + cylinders + "," + gasTankCapacity + "," + startType + "\n";
+	}
+	
 }

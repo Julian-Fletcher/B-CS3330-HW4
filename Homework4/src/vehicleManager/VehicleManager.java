@@ -221,7 +221,7 @@ public class VehicleManager {
 		
 		for(Vehicle v : masterInventory)
 		{
-			System.out.println(v.calculateMaintenaceCost(distance));
+			//System.out.println(v.calculateMaintenaceCost(distance));
 			currentCost = v.calculateMaintenaceCost(distance);
 			if(currentCost >= highestCost)
 			{

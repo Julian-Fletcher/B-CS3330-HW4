@@ -177,5 +177,10 @@ public class Car extends Vehicle
 				+ color + ", fuelType=" + fuelType + ", mileage=" + mileage + ", mass=" + mass + ", cylinders="
 				+ cylinders + ", gasTankCapacity=" + gasTankCapacity + ", startType=" + startType + "]";
 	}
+	
+	public String printFormat() {
+		return "Car" + brand + "," + modelYear + "," + price + "," + color + "," + fuelType + "," 
+				+ mileage + "," + mass + "," + cylinders + "," + gasTankCapacity + "," + startType + "\n";
+	}
 
 }

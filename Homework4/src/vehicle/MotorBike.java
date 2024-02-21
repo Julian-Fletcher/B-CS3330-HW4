@@ -182,5 +182,10 @@ public class MotorBike extends Vehicle
 				+ ", cylinders=" + cylinders + ", gasTankCapacity=" + gasTankCapacity + ", startType=" + startType
 				+ "]";
 	}
+	
+	public String printFormat() {
+		return "MotorBike" + brand + "," + modelYear + "," + price + "," + color + "," + fuelType + "," 
+				+ mileage + "," + mass + "," + cylinders + "," + gasTankCapacity + "," + startType + "\n";
+	}
 
 }

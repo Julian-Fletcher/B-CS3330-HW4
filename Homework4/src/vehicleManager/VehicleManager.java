@@ -17,10 +17,11 @@ import vehicleAttributes.StartMechanism;
 import vehicleAttributes.VehicleColor;
 
 public class VehicleManager {
-	private static VehicleManager instance = null;
-
-	public ArrayList<Vehicle> masterInventory = new ArrayList<>();
+	private final static double distance = 300;
+	private final static double fuelPrice = 3.25;
 	private static String vehicleFilePath = "Files/vehicleList.csv"; //creating filePath to vehicleList.csv
+	private static VehicleManager instance = null;
+	public ArrayList<Vehicle> masterInventory = new ArrayList<>();
 	
 	public static VehicleManager getInstance()
 	{

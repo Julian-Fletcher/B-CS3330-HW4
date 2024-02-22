@@ -19,6 +19,8 @@ public class VehicleManager
 	private static VehicleManager instance = null;
 	public ArrayList<Vehicle> masterInventory = new ArrayList<>();
 	private static String vehicleFilePath = "Files/vehicleList.csv"; //creating filePath to vehicleList.csv
+	private final static double distance = 300;
+	private final static double fuelPrice = 3.25;
 	
 	public static VehicleManager getInstance()
 	{
@@ -101,6 +103,8 @@ public class VehicleManager
 		int count = 0;
 		for(Vehicle vehicle : masterInventory) {
 			if(vehicle instanceof Car) {
+				vehicle.calculateMaintenaceCost(distance);
+				vehicle.calculateFuelEfficiency(distance, fuelPrice);
 				System.out.println(vehicle);
 				count++;
 			}
@@ -115,6 +119,8 @@ public class VehicleManager
 		int count = 0;
 		for(Vehicle vehicle : masterInventory) {
 			if(vehicle instanceof Truck) {
+				vehicle.calculateMaintenaceCost(distance);
+				vehicle.calculateFuelEfficiency(distance, fuelPrice);
 				System.out.println(vehicle);
 				count++;
 			}
@@ -129,6 +135,8 @@ public class VehicleManager
 		int count = 0;
 		for(Vehicle vehicle : masterInventory) {
 			if(vehicle instanceof SUV) {
+				vehicle.calculateMaintenaceCost(distance);
+				vehicle.calculateFuelEfficiency(distance, fuelPrice);
 				System.out.println(vehicle);
 				count++;
 			}
@@ -143,6 +151,8 @@ public class VehicleManager
 		int count = 0;
 		for(Vehicle vehicle : masterInventory) {
 			if(vehicle instanceof MotorBike) {
+				vehicle.calculateMaintenaceCost(distance);
+				vehicle.calculateFuelEfficiency(distance, fuelPrice);
 				System.out.println(vehicle);
 				count++;
 			}
@@ -154,6 +164,8 @@ public class VehicleManager
 	
 	public void displayVehicleInformation(Vehicle v)
 	{
+		v.calculateMaintenaceCost(distance);
+		v.calculateFuelEfficiency(distance, fuelPrice);
 		System.out.println(v);
 	}
 	
@@ -161,6 +173,8 @@ public class VehicleManager
 	{
 		int count = 0;
 		for(Vehicle vehicle : masterInventory) {
+			vehicle.calculateMaintenaceCost(distance);
+			vehicle.calculateFuelEfficiency(distance, fuelPrice);
 			System.out.println(vehicle);
 			count++;
 		}

@@ -255,9 +255,53 @@ public class VehicleManager {
 		return masterInventory.get(lowCount);
 	}
 
-	public ArrayList<Vehicle> getVehicleWithHighestFuelEfficiency(double distance, double fuelPrice) {
-	}
+		public ArrayList<Vehicle> getVehicleWithHighestFuelEfficiency(double distance, double fuelPrice) {
+		ArrayList<Vehicle> highestEfficiencyVehicles = new ArrayList<>();
+        double highestEfficiency = Double.MIN_VALUE;
 
-	public double getAverageFuelEfficiencyOfSUVs(double distance, double fuelPrice) {
-	}
+        for (Vehicle vehicle : masterInventory) {
+            double efficiency = vehicle.calculateFuelEfficiency(distance, fuelPrice);
+            if (efficiency > highestEfficiency) {
+                highestEfficiency = efficiency;
+                highestEfficiencyVehicles.clear();
+                highestEfficiencyVehicles.add(vehicle);
+            } else if (efficiency == highestEfficiency) {
+                highestEfficiencyVehicles.add(vehicle);
+            }
+        }
+
+        return highestEfficiencyVehicles;
+    }
+
+    public ArrayList<Vehicle> getVehicleWithLowestFuelEfficiency(double distance, double fuelPrice) {
+        ArrayList<Vehicle> lowestEfficiencyVehicles = new ArrayList<>();
+        double lowestEfficiency = Double.MAX_VALUE;
+
+        for (Vehicle vehicle : masterInventory) {
+            double efficiency = vehicle.calculateFuelEfficiency(distance, fuelPrice);
+            if (efficiency < lowestEfficiency) {
+                lowestEfficiency = efficiency;
+                lowestEfficiencyVehicles.clear();
+                lowestEfficiencyVehicles.add(vehicle);
+            } else if (efficiency == lowestEfficiency) {
+                lowestEfficiencyVehicles.add(vehicle);
+            }
+        }
+
+        return lowestEfficiencyVehicles;
+    }
+
+    public double getAverageFuelEfficiencyOfSUVs(double distance, double fuelPrice) {
+        double totalEfficiency = 0;
+        int suvCount = 0;
+
+        for (Vehicle vehicle : masterInventory) {
+            if (vehicle instanceof SUV) {
+                totalEfficiency += vehicle.calculateFuelEfficiency(distance, fuelPrice);
+                suvCount++;
+            }
+        }
+
+        return suvCount == 0 ? 0 : totalEfficiency / suvCount;
+    }
 }

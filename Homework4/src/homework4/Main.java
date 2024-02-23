@@ -18,11 +18,15 @@ public class Main {
 			System.out.println("VehicleManger did NOT successfully read from .csv!!!");
 		}
 		
-		vehicleManager.displayAllCarInformation();
-		vehicleManager.displayVehicleInformation(vehicleManager.masterInventory.get(1));
-		vehicleManager.masterInventory.get(1).calculateFuelEfficiency(23, 55);
-		vehicleManager.masterInventory.get(1).calculateMaintenaceCost(55);
-		vehicleManager.displayVehicleInformation(vehicleManager.masterInventory.get(1));
+		//vehicleManager.displayAllCarInformation();
+		vehicleManager.displayAllVehicleInformation();
+		System.out.println("\nHighest maintenance cost:");
+		vehicleManager.displayVehicleInformation(vehicleManager.getVehicleWithHighestMaintenanceCost(300));
+		System.out.println("\nLowest maintenance cost:");
+		vehicleManager.displayVehicleInformation(vehicleManager.getVehicleWithLowestMaintenanceCost(300));
+		//vehicleManager.masterInventory.get(1).calculateFuelEfficiency(23, 55);
+		//vehicleManager.masterInventory.get(1).calculateMaintenaceCost(55);
+		//vehicleManager.displayVehicleInformation(vehicleManager.masterInventory.get(1));
 	}
 
 }

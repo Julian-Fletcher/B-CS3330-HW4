@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 import vehicle.Car;
@@ -224,10 +225,19 @@ public class VehicleManager {
 		{
 			//System.out.println(v.calculateMaintenaceCost(distance));
 			currentCost = v.calculateMaintenaceCost(distance);
-			if(currentCost >= highestCost)
+			if(currentCost > highestCost)
 			{
 				highestCost = currentCost;
 				highCount = count;
+			}
+			else if(currentCost == highestCost)
+			{
+				double number = Math.random();
+				if(number >= 0.5)
+				{
+					highestCost = currentCost;
+					highCount = count;
+				}
 			}
 			count++;
 		}
@@ -245,10 +255,19 @@ public class VehicleManager {
 		{
 			//System.out.println(v.calculateMaintenaceCost(distance));
 			currentCost = v.calculateMaintenaceCost(distance);
-			if(currentCost <= lowestCost)
+			if(currentCost < lowestCost)
 			{
 				lowestCost = currentCost;
 				lowCount = count;
+			}
+			else if(currentCost == lowestCost)
+			{
+				double number = Math.random();
+				if(number >= 0.5)
+				{
+					lowestCost = currentCost;
+					lowestCost = count;
+				}
 			}
 			count++;
 		}

@@ -255,7 +255,7 @@ public class VehicleManager {
 		return masterInventory.get(lowCount);
 	}
 
-		public ArrayList<Vehicle> getVehicleWithHighestFuelEfficiency(double distance, double fuelPrice) {
+		public ArrayList<Vehicle> getVehicleWithHighestFuelEfficiency(double distance, double fuelPrice) { // Initialize ArrayList to store vehicles with the highest fuel efficiency
 		ArrayList<Vehicle> highestEfficiencyVehicles = new ArrayList<>();
         double highestEfficiency = Double.MIN_VALUE;
 
@@ -273,7 +273,7 @@ public class VehicleManager {
         return highestEfficiencyVehicles;
     }
 
-    public ArrayList<Vehicle> getVehicleWithLowestFuelEfficiency(double distance, double fuelPrice) {
+    public ArrayList<Vehicle> getVehicleWithLowestFuelEfficiency(double distance, double fuelPrice) {// Initialize ArrayList to store vehicles with the lowest fuel efficiency
         ArrayList<Vehicle> lowestEfficiencyVehicles = new ArrayList<>();
         double lowestEfficiency = Double.MAX_VALUE;
 
@@ -291,7 +291,7 @@ public class VehicleManager {
         return lowestEfficiencyVehicles;
     }
 
-    public double getAverageFuelEfficiencyOfSUVs(double distance, double fuelPrice) {
+    public double getAverageFuelEfficiencyOfSUVs(double distance, double fuelPrice) {// Initialize variables to store total efficiency and count of SUVs
         double totalEfficiency = 0;
         int suvCount = 0;
 

@@ -8,6 +8,8 @@ import vehicleAttributes.VehicleColor;
 
 public class Truck extends Vehicle
 {
+	private final static double distance = 300;
+	private final static double fuelPrice = 3.25;
 	protected String brand;
 	protected String make;
 	protected long modelYear;
@@ -176,7 +178,7 @@ public class Truck extends Vehicle
 	public String toString() {
 		return "Truck [brand=" + brand + ", make=" + make + ", modelYear=" + modelYear + ", price=" + price + ", color="
 				+ color + ", fuelType=" + fuelType + ", mileage=" + mileage + ", mass=" + mass + ", cylinders="
-				+ cylinders + ", gasTankCapacity=" + gasTankCapacity + ", startType=" + startType + ", maintenanceCost=" + maintenanceCost + ", fuelEfficiency=" + fuelEfficiency + "]";
+				+ cylinders + ", gasTankCapacity=" + gasTankCapacity + ", startType=" + startType + ", maintenanceCost=" + this.calculateMaintenaceCost(distance) + ", fuelEfficiency=" + this.calculateFuelEfficiency(distance, fuelPrice) + "]";
 	}
 	
 	public String printFormat() {

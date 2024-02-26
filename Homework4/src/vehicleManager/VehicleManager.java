@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
 import vehicle.Car;
@@ -18,8 +17,6 @@ import vehicleAttributes.StartMechanism;
 import vehicleAttributes.VehicleColor;
 
 public class VehicleManager {
-	private final static double distance = 300;
-	private final static double fuelPrice = 3.25;
 	private static String vehicleFilePath = "Files/vehicleList.csv"; //creating filePath to vehicleList.csv
 	private static VehicleManager instance = null;
 	public ArrayList<Vehicle> masterInventory = new ArrayList<>();
@@ -271,8 +268,8 @@ public class VehicleManager {
 				}
 			}
 			count++;
-			System.out.println("Low Cost: " + lowestCost);
-			System.out.println("Lowest Count: " + lowCount);
+			//System.out.println("Low Cost: " + lowestCost);
+			//System.out.println("Lowest Count: " + lowCount);
 		}
 		return masterInventory.get(lowCount);
 	}

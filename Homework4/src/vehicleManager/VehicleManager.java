@@ -266,7 +266,7 @@ public class VehicleManager {
 				if(number >= 0.5)
 				{
 					lowestCost = currentCost;
-					lowestCost = count;
+					lowCount = count;
 				}
 			}
 			count++;

@@ -19,7 +19,7 @@ public class Main {
 		}
 		
 		//vehicleManager.displayAllCarInformation();
-		vehicleManager.displayAllVehicleInformation();
+		//vehicleManager.displayAllVehicleInformation();
 		System.out.println("\nHighest maintenance cost:");
 		vehicleManager.displayVehicleInformation(vehicleManager.getVehicleWithHighestMaintenanceCost(300));
 		System.out.println("\nLowest maintenance cost:");

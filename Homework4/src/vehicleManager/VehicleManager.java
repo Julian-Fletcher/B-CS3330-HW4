@@ -239,6 +239,7 @@ public class VehicleManager {
 					highCount = count;
 				}
 			}
+			//System.out.println("Highest Count: " + highCount);
 			count++;
 		}
 		return masterInventory.get(highCount);
@@ -246,7 +247,7 @@ public class VehicleManager {
 
 	public Vehicle getVehicleWithLowestMaintenanceCost(double distance)
 	{
-		double lowestCost = 0;
+		double lowestCost = 9999999;
 		double currentCost;
 		int count = 0;
 		int lowCount = 0;
@@ -270,6 +271,8 @@ public class VehicleManager {
 				}
 			}
 			count++;
+			System.out.println("Low Cost: " + lowestCost);
+			System.out.println("Lowest Count: " + lowCount);
 		}
 		return masterInventory.get(lowCount);
 	}

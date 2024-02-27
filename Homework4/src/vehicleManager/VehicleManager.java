@@ -2,12 +2,10 @@ package vehicleManager;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
-
 import vehicle.Car;
 import vehicle.MotorBike;
 import vehicle.SUV;
@@ -17,12 +15,13 @@ import vehicleAttributes.FuelType;
 import vehicleAttributes.StartMechanism;
 import vehicleAttributes.VehicleColor;
 
-public class VehicleManager {
-	private final static double distance = 300;
-	private final static double fuelPrice = 3.25;
-	private static String vehicleFilePath = "Files/vehicleList.csv"; //creating filePath to vehicleList.csv
+public class VehicleManager
+{
 	private static VehicleManager instance = null;
 	public ArrayList<Vehicle> masterInventory = new ArrayList<>();
+	private static String vehicleFilePath = "Files/vehicleList.csv"; //creating filePath to vehicleList.csv
+	private final static double distance = 300;
+	private final static double fuelPrice = 3.25;
 	
 	public static VehicleManager getInstance()
 	{
@@ -33,18 +32,18 @@ public class VehicleManager {
 		return instance;
 	}
 
-	public boolean initializeStock() // reads all data from the .csv file and makes vehicle objects that fall under
-										// their given subclasses
+	public boolean initializeStock() //reads all data from the .csv file and makes vehicle objects that fall under their given subclasses
 	{
-		try {
+		try 
+		{
 			Scanner fileIn = new Scanner(new FileInputStream(vehicleFilePath));
-			fileIn.nextLine(); // storing the first line of the .csv file somewhere else since it doesn't
-								// contain vehicle elements
-
-			while (fileIn.hasNext()) {
+			fileIn.nextLine(); //storing the first line of the .csv file somewhere else since it doesn't contain vehicle elements
+			
+			while(fileIn.hasNext())
+			{
 				String nextLine = fileIn.nextLine();
-				String token[] = nextLine.split(","); // token out each element
-
+				String token[] = nextLine.split(","); //token out each element
+				
 				String type = token[0];
 				String brand = token[1];
 				String make = token[2];
@@ -57,54 +56,56 @@ public class VehicleManager {
 				int cylinders = Integer.parseInt(token[9]);
 				double gasTankCapacity = Double.parseDouble(token[10]);
 				StartMechanism startType = StartMechanism.valueOf(token[11]);
-
-				switch (type) // based on the vehicle type read from the .csv file create appropriate vehicle
-								// subclasses
+				
+				switch(type) //based on the vehicle type read from the .csv file create appropriate vehicle subclasses
 				{
-				case "Truck": {
-					Truck newTruck = new Truck(brand, make, modelYear, price, color, fuelType, mileage, mass, cylinders,
-							gasTankCapacity, startType);
-					masterInventory.add(newTruck);
-					break;
-				}
-				case "Car": {
-					Car newCar = new Car(brand, make, modelYear, price, color, fuelType, mileage, mass, cylinders,
-							gasTankCapacity, startType);
-					masterInventory.add(newCar);
-					break;
-				}
-				case "SUV": {
-					SUV newSUV = new SUV(brand, make, modelYear, price, color, fuelType, mileage, mass, cylinders,
-							gasTankCapacity, startType);
-					masterInventory.add(newSUV);
-					break;
-				}
-				case "MotorBike": {
-					MotorBike newMotorBike = new MotorBike(brand, make, modelYear, price, color, fuelType, mileage,
-							mass, cylinders, gasTankCapacity, startType);
-					masterInventory.add(newMotorBike);
-					break;
-				}
-				default: // if a given vehicle isn't "Truck, Car, SUV, or MotorBike" this default case
-							// will appear
-				{
-					System.out.println("Vehicle Type Not Found!!!");
-					break;
-				}
+					case "Truck":
+					{
+						Truck newTruck = new Truck(brand, make, modelYear, price, color, fuelType, mileage, mass, cylinders, gasTankCapacity, startType);
+						masterInventory.add(newTruck);
+						break;
+					}
+					case "Car":
+					{
+						Car newCar = new Car(brand, make, modelYear, price, color, fuelType, mileage, mass, cylinders, gasTankCapacity, startType);
+						masterInventory.add(newCar);
+						break;
+					}
+					case "SUV":
+					{
+						SUV newSUV = new SUV(brand, make, modelYear, price, color, fuelType, mileage, mass, cylinders, gasTankCapacity, startType);
+						masterInventory.add(newSUV);
+						break;
+					}
+					case "MotorBike":
+					{
+						MotorBike newMotorBike = new MotorBike(brand, make, modelYear, price, color, fuelType, mileage, mass, cylinders, gasTankCapacity, startType);
+						masterInventory.add(newMotorBike);
+						break;
+					}
+					default: //if a given vehicle isn't "Truck, Car, SUV, or MotorBike" this default case will appear
+					{
+						System.out.println("Vehicle Type Not Found!!!");
+						break;
+					}
 				}
 			}
-		} catch (FileNotFoundException e) {
+		} 
+		catch (FileNotFoundException e)
+		{
 			e.printStackTrace();
-			return false;
-		}
+			return false;	
+		}		
 		return true;
 	}
-
+	
 	public void displayAllCarInformation()
 	{
 		int count = 0;
 		for(Vehicle vehicle : masterInventory) {
 			if(vehicle instanceof Car) {
+				vehicle.calculateMaintenaceCost(distance);
+				vehicle.calculateFuelEfficiency(distance, fuelPrice);
 				System.out.println(vehicle);
 				count++;
 			}
@@ -119,6 +120,8 @@ public class VehicleManager {
 		int count = 0;
 		for(Vehicle vehicle : masterInventory) {
 			if(vehicle instanceof Truck) {
+				vehicle.calculateMaintenaceCost(distance);
+				vehicle.calculateFuelEfficiency(distance, fuelPrice);
 				System.out.println(vehicle);
 				count++;
 			}
@@ -133,6 +136,8 @@ public class VehicleManager {
 		int count = 0;
 		for(Vehicle vehicle : masterInventory) {
 			if(vehicle instanceof SUV) {
+				vehicle.calculateMaintenaceCost(distance);
+				vehicle.calculateFuelEfficiency(distance, fuelPrice);
 				System.out.println(vehicle);
 				count++;
 			}
@@ -147,6 +152,8 @@ public class VehicleManager {
 		int count = 0;
 		for(Vehicle vehicle : masterInventory) {
 			if(vehicle instanceof MotorBike) {
+				vehicle.calculateMaintenaceCost(distance);
+				vehicle.calculateFuelEfficiency(distance, fuelPrice);
 				System.out.println(vehicle);
 				count++;
 			}
@@ -158,6 +165,8 @@ public class VehicleManager {
 	
 	public void displayVehicleInformation(Vehicle v)
 	{
+		v.calculateMaintenaceCost(distance);
+		v.calculateFuelEfficiency(distance, fuelPrice);
 		System.out.println(v);
 	}
 	
@@ -165,6 +174,8 @@ public class VehicleManager {
 	{
 		int count = 0;
 		for(Vehicle vehicle : masterInventory) {
+			vehicle.calculateMaintenaceCost(distance);
+			vehicle.calculateFuelEfficiency(distance, fuelPrice);
 			System.out.println(vehicle);
 			count++;
 		}
@@ -172,15 +183,15 @@ public class VehicleManager {
 			System.out.println("There Are No Vehicles With These Parameters.");
 		}
 	}
-
+	
 	public boolean removeVehicle(Vehicle vehicle) {
 		return masterInventory.remove(vehicle);
 	}
-
+	
 	public boolean addVehicle(Vehicle vehicle) {
 		return masterInventory.add(vehicle);
 	}
-
+	
 	public boolean saveVehicleList() {
 		try {
 			FileWriter fileWriter = new FileWriter(vehicleFilePath);
@@ -198,7 +209,7 @@ public class VehicleManager {
 			return false;
 		}
 	}
-
+	
 	private boolean isVehicleType(Vehicle v, Class clazz) {
 		return v.getClass().equals(clazz);
 	}
@@ -217,13 +228,14 @@ public class VehicleManager {
 	public Vehicle getVehicleWithHighestMaintenanceCost(double distance)
 	{
 		double highestCost = Double.MIN_VALUE;
-		double currentCost;
+
+		double currentCost = 0;
+
 		int count = 0;
 		int highCount = 0;
 		
 		for(Vehicle v : masterInventory)
 		{
-			//System.out.println(v.calculateMaintenaceCost(distance));
 			currentCost = v.calculateMaintenaceCost(distance);
 			if(currentCost > highestCost)
 			{
@@ -243,7 +255,7 @@ public class VehicleManager {
 		}
 		return masterInventory.get(highCount);
 	}
-
+	
 	public Vehicle getVehicleWithLowestMaintenanceCost(double distance)
 	{
 		double lowestCost = Double.MAX_VALUE;
@@ -255,6 +267,7 @@ public class VehicleManager {
 		{
 			//System.out.println(v.calculateMaintenaceCost(distance));
 			currentCost = v.calculateMaintenaceCost(distance);
+			if(currentCost <= lowestCost)
 			if(currentCost < lowestCost)
 			{
 				lowestCost = currentCost;
@@ -266,31 +279,36 @@ public class VehicleManager {
 				if(number >= 0.5)
 				{
 					lowestCost = currentCost;
-					lowCount = count;
+					lowestCost = count;
 				}
 			}
 			count++;
 		}
 		return masterInventory.get(lowCount);
 	}
-
-		public ArrayList<Vehicle> getVehicleWithHighestFuelEfficiency(double distance, double fuelPrice) { // Initialize ArrayList to store vehicles with the highest fuel efficiency
+	
+	public ArrayList<Vehicle> getVehicleWithHighestFuelEfficiency(double distance, double fuelPrice)
+	{ // Initialize ArrayList to store vehicles with the highest fuel efficiency
 		ArrayList<Vehicle> highestEfficiencyVehicles = new ArrayList<>();
         double highestEfficiency = Double.MIN_VALUE;
-
-        for (Vehicle vehicle : masterInventory) {
+        for (Vehicle vehicle : masterInventory) 
+        {
             double efficiency = vehicle.calculateFuelEfficiency(distance, fuelPrice);
-            if (efficiency > highestEfficiency) {
+            if (efficiency > highestEfficiency)
+            {
                 highestEfficiency = efficiency;
                 highestEfficiencyVehicles.clear();
                 highestEfficiencyVehicles.add(vehicle);
-            } else if (efficiency == highestEfficiency) {
+                System.out.println("Highest Efficiency: " + highestEfficiency);
+            } 
+            else if (efficiency == highestEfficiency) 
+            {
                 highestEfficiencyVehicles.add(vehicle);
             }
         }
-
         return highestEfficiencyVehicles;
     }
+
 
     public ArrayList<Vehicle> getVehicleWithLowestFuelEfficiency(double distance, double fuelPrice) {// Initialize ArrayList to store vehicles with the lowest fuel efficiency
         ArrayList<Vehicle> lowestEfficiencyVehicles = new ArrayList<>();
@@ -323,4 +341,5 @@ public class VehicleManager {
 
         return suvCount == 0 ? -1 : totalEfficiency / suvCount;
     }
+
 }

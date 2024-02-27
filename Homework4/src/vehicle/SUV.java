@@ -181,8 +181,10 @@ public class SUV extends Vehicle
 				+ cylinders + ", gasTankCapacity=" + gasTankCapacity + ", startType=" + startType + ", maintenanceCost=" + this.calculateMaintenaceCost(distance) + ", fuelEfficiency=" + this.calculateFuelEfficiency(distance, fuelPrice) + "]";
 	}
 
+
 	public String printFormat() {
 		return "SUV." + brand + "," + modelYear + "," + price + "," + color + "," + fuelType + "," 
 				+ mileage + "," + mass + "," + cylinders + "," + gasTankCapacity + "," + startType + "\n";
 	}
 }
+

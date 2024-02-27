@@ -32,6 +32,7 @@ public class Main {
 		//vehicleManager.masterInventory.get(1).calculateFuelEfficiency(23, 55);
 		//vehicleManager.masterInventory.get(1).calculateMaintenaceCost(55);
 		//vehicleManager.displayVehicleInformation(vehicleManager.masterInventory.get(1));
+
 	}
 
 }

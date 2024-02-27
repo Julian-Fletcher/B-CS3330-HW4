@@ -4,7 +4,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.io.FileWriter;
+import java.io.IOException;
 import vehicle.Car;
 import vehicle.MotorBike;
 import vehicle.SUV;
@@ -183,25 +184,34 @@ public class VehicleManager
 		}
 	}
 	
-	public boolean removeVehicle(Vehicle vehicle)
-	{
-		return true;
+	public boolean removeVehicle(Vehicle vehicle) {
+		return masterInventory.remove(vehicle);
 	}
 	
-	public boolean addVehicle(Vehicle vehicle)
-	{
-		return true;
+	public boolean addVehicle(Vehicle vehicle) {
+		return masterInventory.add(vehicle);
 	}
 	
-	public boolean saveVehicleList()
-	{
-		return true;
+	public boolean saveVehicleList() {
+		try {
+			FileWriter fileWriter = new FileWriter(vehicleFilePath);
+			String headLine = "Type, Model, Make, ModelYear, Price, Color, FuelType, Mileage\n";
+			fileWriter.write(headLine);
+			for(Vehicle vehicle : masterInventory) {
+				fileWriter.write(vehicle.printFormat());
+			}
+			
+			fileWriter.close();
+			return true;
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+			return false;
+		}
 	}
 	
-	private boolean isVehicleType(Vehicle v, Class clazz)
-	{
-		
-		return true;
+	private boolean isVehicleType(Vehicle v, Class clazz) {
+		return v.getClass().equals(clazz);
 	}
 	
 	public int getNumberOfVehichlesByType(Class clazz)
@@ -214,7 +224,7 @@ public class VehicleManager
 		}
 		return count;
 	}
-	
+
 	public Vehicle getVehicleWithHighestMaintenanceCost(double distance)
 	{
 		double highestCost = Double.MIN_VALUE;
@@ -275,16 +285,22 @@ public class VehicleManager
 		return masterInventory.get(lowCount);
 	}
 	
-	public ArrayList<Vehicle> getVehicleWithHighestFuelEfficiency(double distance, double fuelPrice) { // Initialize ArrayList to store vehicles with the highest fuel efficiency
+	public ArrayList<Vehicle> getVehicleWithHighestFuelEfficiency(double distance, double fuelPrice)
+	{ // Initialize ArrayList to store vehicles with the highest fuel efficiency
 		ArrayList<Vehicle> highestEfficiencyVehicles = new ArrayList<>();
         double highestEfficiency = Double.MIN_VALUE;
-        for (Vehicle vehicle : masterInventory) {
+        for (Vehicle vehicle : masterInventory) 
+        {
             double efficiency = vehicle.calculateFuelEfficiency(distance, fuelPrice);
-            if (efficiency > highestEfficiency) {
+            if (efficiency > highestEfficiency)
+            {
                 highestEfficiency = efficiency;
                 highestEfficiencyVehicles.clear();
                 highestEfficiencyVehicles.add(vehicle);
-            } else if (efficiency == highestEfficiency) {
+                System.out.println("Highest Efficiency: " + highestEfficiency);
+            } 
+            else if (efficiency == highestEfficiency) 
+            {
                 highestEfficiencyVehicles.add(vehicle);
             }
         }

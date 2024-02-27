@@ -28,7 +28,7 @@ public class Main {
 		vehicleManager.displayAllSUVInformation();
 		
 		
-		System.out.println(vehicleManager.getAverageFuelEfficiencyOfSUVs(100, 100));
+		System.out.println(vehicleManager.getAverageFuelEfficiencyOfSUVs(300, 3.25));
 		//vehicleManager.masterInventory.get(1).calculateFuelEfficiency(23, 55);
 		//vehicleManager.masterInventory.get(1).calculateMaintenaceCost(55);
 		//vehicleManager.displayVehicleInformation(vehicleManager.masterInventory.get(1));

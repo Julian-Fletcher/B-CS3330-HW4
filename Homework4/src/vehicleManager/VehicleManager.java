@@ -228,7 +228,9 @@ public class VehicleManager
 	public Vehicle getVehicleWithHighestMaintenanceCost(double distance)
 	{
 		double highestCost = Double.MIN_VALUE;
+
 		double currentCost = 0;
+
 		int count = 0;
 		int highCount = 0;
 		
@@ -306,32 +308,38 @@ public class VehicleManager
         }
         return highestEfficiencyVehicles;
     }
-	
-	   public ArrayList<Vehicle> getVehicleWithLowestFuelEfficiency(double distance, double fuelPrice) {// Initialize ArrayList to store vehicles with the lowest fuel efficiency
-	        ArrayList<Vehicle> lowestEfficiencyVehicles = new ArrayList<>();
-	        double lowestEfficiency = Double.MAX_VALUE;
-	        for (Vehicle vehicle : masterInventory) {
-	            double efficiency = vehicle.calculateFuelEfficiency(distance, fuelPrice);
-	            if (efficiency < lowestEfficiency) {
-	                lowestEfficiency = efficiency;
-	                lowestEfficiencyVehicles.clear();
-	                lowestEfficiencyVehicles.add(vehicle);
-	            } else if (efficiency == lowestEfficiency) {
-	                lowestEfficiencyVehicles.add(vehicle);
-	            }
-	        }
-	        return lowestEfficiencyVehicles;
-	    }
-	   
-	   public double getAverageFuelEfficiencyOfSUVs(double distance, double fuelPrice) {// Initialize variables to store total efficiency and count of SUVs
-	        double totalEfficiency = 0;
-	        int suvCount = 0;
-	        for (Vehicle vehicle : masterInventory) {
-	            if (vehicle instanceof SUV) {
-	                totalEfficiency += vehicle.calculateFuelEfficiency(distance, fuelPrice);
-	                suvCount++;
-	            }
-	        }
-	        return suvCount == 0 ? 0 : totalEfficiency / suvCount;
-	    }
+
+
+    public ArrayList<Vehicle> getVehicleWithLowestFuelEfficiency(double distance, double fuelPrice) {// Initialize ArrayList to store vehicles with the lowest fuel efficiency
+        ArrayList<Vehicle> lowestEfficiencyVehicles = new ArrayList<>();
+        double lowestEfficiency = Double.MAX_VALUE;
+
+        for (Vehicle vehicle : masterInventory) {
+            double efficiency = vehicle.calculateFuelEfficiency(distance, fuelPrice);
+            if (efficiency < lowestEfficiency) {
+                lowestEfficiency = efficiency;
+                lowestEfficiencyVehicles.clear();
+                lowestEfficiencyVehicles.add(vehicle);
+            } else if (efficiency == lowestEfficiency) {
+                lowestEfficiencyVehicles.add(vehicle);
+            }
+        }
+
+        return lowestEfficiencyVehicles;
+    }
+
+    public double getAverageFuelEfficiencyOfSUVs(double distance, double fuelPrice) {// Initialize variables to store total efficiency and count of SUVs
+        double totalEfficiency = 0;
+        int suvCount = 0;
+
+        for (Vehicle vehicle : masterInventory) {
+            if (isVehicleType(vehicle, SUV.class)) {
+                totalEfficiency += vehicle.calculateFuelEfficiency(distance, fuelPrice);
+                suvCount++;
+            }
+        }
+
+        return suvCount == 0 ? -1 : totalEfficiency / suvCount;
+    }
+
 }

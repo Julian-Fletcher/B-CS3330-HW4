@@ -216,7 +216,7 @@ public class VehicleManager {
 
 	public Vehicle getVehicleWithHighestMaintenanceCost(double distance)
 	{
-		double highestCost = 0;
+		double highestCost = Double.MIN_VALUE;
 		double currentCost;
 		int count = 0;
 		int highCount = 0;
@@ -246,7 +246,7 @@ public class VehicleManager {
 
 	public Vehicle getVehicleWithLowestMaintenanceCost(double distance)
 	{
-		double lowestCost = 0;
+		double lowestCost = Double.MAX_VALUE;
 		double currentCost;
 		int count = 0;
 		int lowCount = 0;

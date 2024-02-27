@@ -179,7 +179,7 @@ public class Car extends Vehicle
 	}
 	
 	public String printFormat() {
-		return "Car" + brand + "," + modelYear + "," + price + "," + color + "," + fuelType + "," 
+		return "Car," + brand + "," + modelYear + "," + price + "," + color + "," + fuelType + "," 
 				+ mileage + "," + mass + "," + cylinders + "," + gasTankCapacity + "," + startType + "\n";
 	}
 

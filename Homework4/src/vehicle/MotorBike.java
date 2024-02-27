@@ -183,7 +183,7 @@ public class MotorBike extends Vehicle
 	}
 	
 	public String printFormat() {
-		return "MotorBike" + brand + "," + modelYear + "," + price + "," + color + "," + fuelType + "," 
+		return "MotorBike," + brand + "," + modelYear + "," + price + "," + color + "," + fuelType + "," 
 				+ mileage + "," + mass + "," + cylinders + "," + gasTankCapacity + "," + startType + "\n";
 	}
 

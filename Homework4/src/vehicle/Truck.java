@@ -180,7 +180,7 @@ public class Truck extends Vehicle
 	}
 	
 	public String printFormat() {
-		return "Truck" + brand + "," + modelYear + "," + price + "," + color + "," + fuelType + "," 
+		return "Truck," + brand + "," + modelYear + "," + price + "," + color + "," + fuelType + "," 
 				+ mileage + "," + mass + "," + cylinders + "," + gasTankCapacity + "," + startType + "\n";
 	}
 	

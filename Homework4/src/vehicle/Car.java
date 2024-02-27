@@ -8,6 +8,8 @@ import vehicleAttributes.VehicleColor;
 
 public class Car extends Vehicle
 {
+	private final static double distance = 300;
+	private final static double fuelPrice = 3.25;
 	protected String brand;
 	protected String make;
 	protected long modelYear;
@@ -150,7 +152,7 @@ public class Car extends Vehicle
 		int currentYear = date.getYear();
 		
 		maintenanceCost = distance * this.mass * (currentYear - this.modelYear) * this.cylinders * maintenConst;
-		super.maintenanceCost = maintenanceCost;
+		//super.maintenanceCost = maintenanceCost;
 		return maintenanceCost;
 	}
 
@@ -175,7 +177,7 @@ public class Car extends Vehicle
 	public String toString() {
 		return "Car [brand=" + brand + ", make=" + make + ", modelYear=" + modelYear + ", price=" + price + ", color="
 				+ color + ", fuelType=" + fuelType + ", mileage=" + mileage + ", mass=" + mass + ", cylinders="
-				+ cylinders + ", gasTankCapacity=" + gasTankCapacity + ", startType=" + startType + ", maintenanceCost=" + maintenanceCost + ", fuelEfficiency=" + fuelEfficiency + "]";
+				+ cylinders + ", gasTankCapacity=" + gasTankCapacity + ", startType=" + startType + ", maintenanceCost=" + this.calculateMaintenaceCost(distance) + ", fuelEfficiency=" + this.calculateFuelEfficiency(distance, fuelPrice) + "]";
 	}
 	
 	public String printFormat() {

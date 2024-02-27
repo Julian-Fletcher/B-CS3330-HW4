@@ -315,12 +315,12 @@ public class VehicleManager {
         int suvCount = 0;
 
         for (Vehicle vehicle : masterInventory) {
-            if (vehicle instanceof SUV) {
+            if (isVehicleType(vehicle, SUV.class)) {
                 totalEfficiency += vehicle.calculateFuelEfficiency(distance, fuelPrice);
                 suvCount++;
             }
         }
 
-        return suvCount == 0 ? 0 : totalEfficiency / suvCount;
+        return suvCount == 0 ? -1 : totalEfficiency / suvCount;
     }
 }

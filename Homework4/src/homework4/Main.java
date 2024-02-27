@@ -24,6 +24,11 @@ public class Main {
 		vehicleManager.displayVehicleInformation(vehicleManager.getVehicleWithHighestMaintenanceCost(300));
 		System.out.println("\nLowest maintenance cost:");
 		vehicleManager.displayVehicleInformation(vehicleManager.getVehicleWithLowestMaintenanceCost(300));
+		
+		vehicleManager.displayAllSUVInformation();
+		
+		
+		System.out.println(vehicleManager.getAverageFuelEfficiencyOfSUVs(100, 100));
 		//vehicleManager.masterInventory.get(1).calculateFuelEfficiency(23, 55);
 		//vehicleManager.masterInventory.get(1).calculateMaintenaceCost(55);
 		//vehicleManager.displayVehicleInformation(vehicleManager.masterInventory.get(1));

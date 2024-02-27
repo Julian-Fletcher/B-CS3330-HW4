@@ -182,7 +182,7 @@ public class SUV extends Vehicle
 	}
 
 	public String printFormat() {
-		return "SUV" + brand + "," + modelYear + "," + price + "," + color + "," + fuelType + "," 
+		return "SUV." + brand + "," + modelYear + "," + price + "," + color + "," + fuelType + "," 
 				+ mileage + "," + mass + "," + cylinders + "," + gasTankCapacity + "," + startType + "\n";
 	}
 }
